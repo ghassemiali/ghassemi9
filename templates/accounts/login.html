@@ -1,16 +1,584 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="fa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static '/css/login/flaticon.min.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/fontiran.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static '/css/login/login_v1.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous" />
+    <link href="{% static '/css/login/almasfont.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/login.lang.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/virtualKeyboard.css' %}" rel="stylesheet" />
+    <title>ورود به سامانه</title>
 </head>
-<body>
-    {% if request.user.is_authenticated %}
-    <p>user is authenticated as {{request.user.username}}</p>
-    {% else %}
-    <p>user is not authenticated</p>
-    {% endif %}
+
+
+<body style="overflow:hidden;">
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+            <div class="main-form-holder">
+                <div class="col-sm-10 col-md-10 col-lg-8 col-xl-8" style="margin: 16px auto 16px auto;max-width:75%;">
+                    <!---       <div class="row logo">
+                        <img src="{% static '/img/login/LogoLogin.png' %}"
+                             class="Image-1" />
+                    </div>   -->
+                    <div class="row logo-title">
+                        <div class="first">سامانه آنلاین اطلاعات جامع سایت های شرکت همراه اول</div>
+                        <div class="second">تیم طراحی و بهینه سازی انتقال</div>
+                    </div>
+                    <form action="//online.refahbroker.ir/login" method="post" onSubmit="return submitForm()">
+                        <div class="row">
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-username-container">
+                                    <div class="col-3">
+                                        <label class="text-title">نام کاربری</label>
+                                    </div>
+                                    <div class="col-9" style="text-align: end; padding: 0;">
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="username" style="padding: 0px">
+                                <div class="row Search-bar-background" id="code-username-container">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9848 15.3462C8.11716 15.3462 4.8143 15.931 4.8143 18.2729C4.8143 20.6148 8.0962 21.2205 11.9848 21.2205C15.8524 21.2205 19.1543 20.6348 19.1543 18.2938C19.1543 15.9529 15.8733 15.3462 11.9848 15.3462Z"
+                                                stroke="var(--user-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9848 12.0059C14.5229 12.0059 16.58 9.94779 16.58 7.40969C16.58 4.8716 14.5229 2.81445 11.9848 2.81445C9.44667 2.81445 7.38858 4.8716 7.38858 7.40969C7.38001 9.93922 9.42382 11.9973 11.9524 12.0059H11.9848Z"
+                                                stroke="var(--user-icon-color)" stroke-width="1.42857"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-11 col-md-11 col-lg-10 col-xl-11" style="max-width: 90%;">
+                                        <input type="text" name="username" class="input-text" id="username"
+                                            onfocus="changeIconColor(true,'user-icon-color')"
+                                            onblur="changeIconColor(false,'user-icon-color')" autocomplete="off"
+                                            placeholder="نام کاربری یا ایمیل را وارد کنید" />
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="row">
+
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-password-container">
+                                    <div class="col-3">
+                                        <label class="text-title">رمز عبور</label>
+                                    </div>
+                                    <div class="col-9 paasord-rm-title" style="text-align: end; padding: 0;">
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="password" style="padding: 0px;">
+                                <div class="row Search-bar-background" id="code-password-container">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4234 9.4478V7.3008C16.4234 4.7878 14.3854 2.7498 11.8724 2.7498C9.3594 2.7388 7.3134 4.7668 7.3024 7.2808V7.3008V9.4478"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15.6832 21.2496H8.0422C5.9482 21.2496 4.2502 19.5526 4.2502 17.4576V13.1686C4.2502 11.0736 5.9482 9.37659 8.0422 9.37659H15.6832C17.7772 9.37659 19.4752 11.0736 19.4752 13.1686V17.4576C19.4752 19.5526 17.7772 21.2496 15.6832 21.2496Z"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path d="M11.8629 14.2028V16.4238" stroke="var(--password-icon-color)"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-10 col-md-10 col-lg-9 col-xl-10" style="max-width: 80%;">
+
+                                        <input autocomplete="off" class="input-text keyboardInput" data-val="true"
+                                            id="password" placeholder="رمز عبور خود را وارد کنید" name="Password"
+                                            onfocus="changeIconColor(true,'password-icon-color')"
+                                            onblur="changeIconColor(false,'password-icon-color')"
+                                            style="max-width: 88%;padding: 0;" type="password" />
+
+                                        <div class="keyboardButton" style="float:left">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="2" y="4.5" width="20" height="15" rx="4" stroke="#130F26"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7.5 14.5H16.5" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6 8.5H7.02946" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M9.65714 8.5H10.6866" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13.3143 8.5H14.3437" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.9714 8.5H18.0009" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6 11.5H7.02946" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M9.65714 11.5H10.6866" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13.3143 11.5H14.3437" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.9714 11.5H18.0009" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-1" style="padding-right:0px;" style="max-width: 10%;">
+
+                                        <span id="unvisibleIcon" onclick="showPassword(false)">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.7606 14.3668C9.1856 13.7928 8.8356 13.0128 8.8356 12.1378C8.8356 10.3848 10.2476 8.9718 11.9996 8.9718C12.8666 8.9718 13.6646 9.3228 14.2296 9.8968"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M15.1048 12.699C14.8728 13.989 13.8568 15.007 12.5678 15.241"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M6.6546 17.4724C5.0676 16.2264 3.7236 14.4064 2.7496 12.1374C3.7336 9.85835 5.0866 8.02835 6.6836 6.77235C8.2706 5.51635 10.1016 4.83435 11.9996 4.83435C13.9086 4.83435 15.7386 5.52635 17.3356 6.79135"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M19.4476 8.99084C20.1356 9.90484 20.7406 10.9598 21.2496 12.1368C19.2826 16.6938 15.8066 19.4388 11.9996 19.4388C11.1366 19.4388 10.2856 19.2988 9.46759 19.0258"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M19.887 4.24963L4.11301 20.0236" stroke="#130F26"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                        <span id="visibleIcon" onclick="showPassword(true)"
+                                            style="text-align:center; display:none;">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15.1615 12.0531C15.1615 13.7991 13.7455 15.2141 11.9995 15.2141C10.2535 15.2141 8.8385 13.7991 8.8385 12.0531C8.8385 10.3061 10.2535 8.89111 11.9995 8.89111C13.7455 8.89111 15.1615 10.3061 15.1615 12.0531Z"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M11.998 19.3549C15.806 19.3549 19.289 16.6169 21.25 12.0529C19.289 7.48885 15.806 4.75085 11.998 4.75085H12.002C8.194 4.75085 4.711 7.48885 2.75 12.0529C4.711 16.6169 8.194 19.3549 12.002 19.3549H11.998Z"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </label>
+                        </div>
+                        <!---
+                        <div class="row">
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-captcha-container">
+                                    <div class="col-3" style="max-width: 25%;">
+                                        <label class="text-title">کد امنیتی</label>
+                                    </div>
+                                    <div class="col-9" style="text-align: end; padding: 0;max-width: 75%;">
+                                        
+                                    </div>
+                                </div>
+                            </label>
+
+
+
+
+                            <label for="captcha" style="padding: 0px;">
+                                <div class="row Search-bar-background" id="code-captcha-container" style="margin-bottom: 32px;">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9845 21.606C11.9845 21.606 19.6565 19.283 19.6565 12.879C19.6565 6.474 19.9345 5.974 19.3195 5.358C18.7035 4.742 12.9905 2.75 11.9845 2.75C10.9785 2.75 5.26551 4.742 4.65051 5.358C4.03451 5.974 4.31251 6.474 4.31251 12.879C4.31251 19.283 11.9845 21.606 11.9845 21.606Z"
+                                                  stroke="var(--security-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M9.38589 11.8746L11.2779 13.7696L15.1759 9.86963" stroke="var(--security-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-6" style="max-width: 49%;">
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="capcha"
+                                               class="input-text"
+                                               id="captcha"
+                                               onfocus="changeIconColor(true,'security-icon-color')"
+                                               onblur="changeIconColor(false,'security-icon-color')"
+                                               placeholder="کد روبه رو را وارد کنید" />
+                                    </div>
+                                    <div class="col-4" style="text-align: left;max-width: 31%;">
+                                        <img onload="this.style.opacity = '1'" alt="" class="captcha-img"
+                                             onclick="return changeCaptchaPlus()"
+                                             id="captcha-img-plus"
+                                             src="" style="opacity: 0.5;" />
+                                    </div>
+
+                                    <div class="col-1" style="padding-right: 0px;max-width: 10%;">
+
+                                        <span onclick="return changeCaptchaPlus()">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 12C20 16.4186 16.4186 20 12 20C7.58141 20 4 16.4186 4 12C4 7.58141 7.58141 4 12 4H14"
+                                                      stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13 1.5L15.4749 3.97487L13 6.44975" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    --->
+
+                        <div class="row">
+                            <input type="submit" style="display:none;" id="main-form" />
+                            <label style="padding: 0px;" for="main-form">
+                                <div class="row Rectangle-190">
+                                    <div class="col-2"></div>
+                                    <div class="col-8" style="text-align:center;margin:auto;">ورود به سامانه</div>
+                                    <div class="col-2" style="margin: auto;padding-right: 0px;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.25 12.2744L19.25 12.2744" stroke="#fff" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="#fff"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row forget-password">
+                    <a href="//online.refahbroker.ir/Account/ForgetPasswordV2" class="link">
+                        رمز عبور خود را فراموش کرده‌اید؟
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-8 Rectangle-1422" style="overflow: hidden;">
+
+            <img src="{% static '/img/login/all-candles.png' %}" srcset="/Contents/Default/Images/all-candles@2x.png 2x,
+                     /Contents/Default/Images/all-candles@3x.png 3x"
+                style="display: block; min-width: -webkit-fill-available; max-height: -webkit-fill-available;" />
+
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-8 Rectangle-1423 scroll-box">
+            <div class="row Rectangle-14" id="notification-alert-container">
+                <div class="top-msg-box">
+                    <div style="margin-bottom: 16px;" id="notification-alert">
+                        <p class="MsoListParagraph" dir="RTL"
+                            style="mso-add-space: auto; text-align: justify; text-indent: -.25in; line-height: 115%; mso-list: l0 level1 lfo1; direction: rtl; unicode-bidi: embed; margin: 0in 40.5pt 0in 0in;">
+                            <span style="background-color: #ffffff;">
+                                <span
+                                    style="mso-bidi-font-family: Calibri; mso-bidi-theme-font: minor-latin; mso-bidi-language: FA;">
+                                    <span style="mso-list: Ignore;">
+                                        <span
+                                            style="font: 7pt 'Times New Roman'; background-color: #ffffff;">&nbsp;&nbsp;</span>
+                                    </span>
+                                </span>
+                                <strong>
+                                    <span lang="FA" style="font-family: 'B Mitra'; mso-bidi-language: FA;">پیامهای مهم
+                                        تیم انتقال</span>
+                                </strong>
+                            </span>
+                        </p>
+                        <p>&nbsp;</p>
+                        <p>پیغام شماره 1</p>
+                        <p>پیغام شماره 2</p>
+                        <p>پیغام شماره 3</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row links-container" style="margin-top: 32%; ">
+                <a class='Rectangle-1406 spcial-links' for-icon='anydesk'
+                    href='https://download.anydesk.com/AnyDesk.exe?_ga=2.197844397.347924518.1523250691-478699343.1523250691'
+                    target='_blank'>
+                    <span class='before-icon'></span>
+                    <span>انی دسک</span>
+                    <span class='after-icon'></span>
+                </a>
+                <a class='Rectangle-1406 spcial-links' for-icon='default'
+                    href='\\dfs\fs\NPO\New Project\6-TRS Planning and Optimization\12.General & TCI Cases\Reports\FTP Download\Faraz Files\IPBB Capacity2022_01_20.xlsx'>
+                    <span class='before-icon'></span>
+                    <span>راهنمای سامانه آنلاین</span>
+                    <span class='after-icon'></span>
+                </a>
+                <a class='Rectangle-1406 spcial-links' for-icon='default'
+                    href='\\dfs\fs\NPO\New Project\6-TRS Planning and Optimization\12.General & TCI Cases\Reports\FTP Download\Faraz Files\'>
+                    <span class='before-icon'></span>
+                    <span>پوشه فراز</span>
+                    <span class='after-icon'></span>
+                </a>
+                <a class='Rectangle-1406 spcial-links' for-icon='default' href="c:\">
+                    <span class='before-icon'></span>
+                    <span>پوشه تیم انتقال</span>
+                    <span class='after-icon'></span>
+                </a>
+
+            </div>
+
+
+            <div class="row Rectangle-14 recived-server-text" id="login-security-tips-container"
+                style="margin-top: 16px !important;">
+
+                <div id="login-security-tips">
+                    <p style="text-align: justify;"><strong><span style="color: #ff0000;">نکات
+                                امنیتی:&nbsp;</span></strong></p>
+                    <p>- هرگز نام کاربری و کلمه عبور خود را در اختیار دیگران قرار ندهید.</p>
+                    <p>- پس از اتمام کار با سامانه، حتماً با استفاده از دکمه خروج، از حساب کاربری خود خارج شوید.</p>
+                    <p>- از ذخیره نام کاربری و رمز عبور در مرورگر حتی المقدور خودداری نمایید.</p>
+                </div>
+            </div>
+
+
+
+            <div class="row Rectangle-14"
+                style="margin-top: 16px !important; margin-bottom: 111px; padding-bottom: 8px;">
+
+
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4" style="padding: 0;">
+                    <span></span>
+                    <!--    <img src="{% static '/img/login//Tadbir1.png' %}" height="32" />  -->
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 perfect-title" style="text-align: center;">
+                    <span>طراحی شده توسط تیم انتقال</span>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4" style="text-align: end; padding: 0;">
+
+                    <?xml version="1.0" encoding="UTF-8" ?>
+                    <!--
+                    <svg width="102px" height="32px" viewBox="0 0 199 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>Logo_Online_Plus</title>
+                        <defs>
+                            <polygon id="path-1" points="0.292868852 0.269508197 40.9453279 0.269508197 40.9453279 43.1960057 0.292868852 43.1960057"></polygon>
+                            <polygon id="path-3" points="0 43.2786885 198.688525 43.2786885 198.688525 0.269508197 0 0.269508197"></polygon>
+                        </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Artboard" transform="translate(-86.000000, -337.000000)">
+                                <g id="Logo_Online_Plus" transform="translate(86.000000, 337.000000)">
+                                    <polygon id="Fill-1" fill="#CD1719" points="117.048984 0.491655738 117.048984 18.1965738 103.770295 18.1965738 103.770295 25.573623 117.541279 25.573623 117.541279 43.278541 124.426033 43.278541 124.426033 25.0818197 137.704721 25.0818197 137.704721 18.1965738 124.426033 18.1965738 124.426033 0.491655738"></polygon>
+                                    <g id="Group-21">
+                                        <path d="M177.378148,0.751032787 C171.835525,1.08103279 169.03077,3.90791803 167.656672,9.27939344 C169.440443,9.95365574 171.238475,10.6328361 173.188475,11.3700492 C174.218311,8.86086885 175.564869,6.8887377 178.345033,6.8725082 C185.126016,6.83218033 191.907492,6.87545902 198.688475,6.88529508 L198.688475,0.491852459 C191.583393,0.548901639 184.46159,0.329065574 177.378148,0.751032787" id="Fill-2" fill="#58595B"></path>
+                                        <g id="Group-6" transform="translate(129.836066, 0.000000)">
+                                            <mask id="mask-2" fill="white">
+                                                <use xlink:href="#path-1"></use>
+                                            </mask>
+                                            <g id="Clip-5"></g>
+                                            <path d="M34.4363115,28.9807377 C34.3895902,30.4468033 34.2681148,31.9227049 34.0246721,33.3686066 C33.6843443,35.3904098 32.527623,36.5727049 30.3356557,36.5402459 C28.2941803,36.5102459 26.2468033,36.6386066 24.2102459,36.5333607 C19.1968033,36.2746721 17.5836885,34.517459 17.5812295,29.4636885 C17.5763115,20.6127049 17.5797541,11.7612295 17.5797541,2.9102459 L17.5797541,0.269262295 L11.1420492,0.269262295 C11.1420492,1.58680328 11.145,2.63778689 11.1415574,3.68827869 C11.1095902,13.0305738 11.1494262,22.3738525 11.0097541,31.7146721 C10.9492623,35.7646721 9.8997541,36.6484426 5.80352459,36.8072951 C3.96172131,36.8790984 2.1154918,36.8195902 0.292868852,36.8195902 L0.292868852,43.0748361 C6.06172131,43.1992623 11.7892623,44.0338525 15.9577869,38.7213934 C18.6809016,42.0046721 22.0890984,43.2730328 26.0805738,43.1604098 C27.5545082,43.1186066 29.0309016,43.1628689 30.5063115,43.1505738 C35.389918,43.1117213 39.2786066,40.582377 40.1845082,35.749918 C40.997459,31.4171311 40.7343443,26.8831967 40.9453279,22.4417213 L34.4535246,22.4417213 C34.4535246,24.7443443 34.5036885,26.8645082 34.4363115,28.9807377" id="Fill-4" fill="#58595B" mask="url(#mask-2)"></path>
+                                        </g>
+                                        <path d="M71.3073934,36.010082 C67.6006721,35.9712295 65.8400164,34.2892623 65.5970656,30.7059836 C65.3570656,27.1763115 66.8491967,25.5961475 70.9247705,25.1436885 C71.5906721,25.069918 72.2614918,25.0472951 72.9313279,25.0463115 C81.1744426,25.0330328 99.3067377,25.1766393 100.327721,25.1682787 L100.327721,18.3277869 C89.2365738,18.3277869 78.4282131,18.2013934 67.6252623,18.3868033 C62.9846066,18.4664754 59.7047705,21.4172951 59.0762459,26.0613934 C58.6449344,29.2531967 58.8028033,32.6009016 59.2203443,35.8113934 C59.7564098,39.9302459 62.3821475,42.3484426 66.5846066,42.8141803 C68.3673934,43.0113934 70.1678852,43.1279508 71.9614918,43.1382787 C78.2319836,43.1766393 84.5029672,43.1530328 91.4826393,43.1530328 C88.9006721,40.450082 86.783459,38.2335246 84.6706721,36.0209016 C80.1495246,36.0209016 75.7282131,36.0568033 71.3073934,36.010082" id="Fill-7" fill="#58595B"></path>
+                                        <mask id="mask-4" fill="white">
+                                            <use xlink:href="#path-3"></use>
+                                        </mask>
+                                        <g id="Clip-10"></g>
+                                        <polygon id="Fill-9" fill="#58595B" mask="url(#mask-4)" points="183.188361 42.9855738 189.062951 42.9855738 189.062951 10.0790164 183.188361 10.0790164"></polygon>
+                                        <path d="M86.5379016,14.0498852 C89.0874098,14.0498852 91.1539672,11.9833279 91.1539672,9.43381967 C91.1539672,6.88431148 89.0874098,4.8177541 86.5379016,4.8177541 C83.9883934,4.8177541 81.9218361,6.88431148 81.9218361,9.43381967 C81.9218361,11.9833279 83.9883934,14.0498852 86.5379016,14.0498852" id="Fill-11" fill="#58595B" mask="url(#mask-4)"></path>
+                                        <path d="M160.389836,17.3527869 C162.939836,17.3527869 165.006393,15.2857377 165.006393,12.7362295 C165.006393,10.1867213 162.939836,8.12016393 160.389836,8.12016393 C157.840328,8.12016393 155.773279,10.1867213 155.773279,12.7362295 C155.773279,15.2857377 157.840328,17.3527869 160.389836,17.3527869" id="Fill-12" fill="#58595B" mask="url(#mask-4)"></path>
+                                        <path d="M97.1578033,33.3752951 C94.6082951,33.3752951 92.5412459,35.4423443 92.5412459,37.9918525 C92.5412459,40.5413607 94.6082951,42.607918 97.1578033,42.607918 C99.7073115,42.607918 101.773869,40.5413607 101.773869,37.9918525 C101.773869,35.4423443 99.7073115,33.3752951 97.1578033,33.3752951" id="Fill-13" fill="#58595B" mask="url(#mask-4)"></path>
+                                        <path d="M106.390377,33.3752951 C103.840377,33.3752951 101.77382,35.4423443 101.77382,37.9918525 C101.77382,40.5413607 103.840377,42.607918 106.390377,42.607918 C108.939885,42.607918 111.006934,40.5413607 111.006934,37.9918525 C111.006934,35.4423443 108.939885,33.3752951 106.390377,33.3752951" id="Fill-14" fill="#58595B" mask="url(#mask-4)"></path>
+                                        <path d="M42.568377,38.6731967 C41.3290328,38.6731967 40.3247705,39.677459 40.3247705,40.9168033 C40.3247705,42.1556557 41.3290328,43.1604098 42.568377,43.1604098 C43.8077213,43.1604098 44.8119836,42.1556557 44.8119836,40.9168033 C44.8119836,39.677459 43.8077213,38.6731967 42.568377,38.6731967" id="Fill-15" fill="#CD1719" mask="url(#mask-4)"></path>
+                                        <path d="M47.0558361,38.6731967 C45.8164918,38.6731967 44.8122295,39.677459 44.8122295,40.9168033 C44.8122295,42.1556557 45.8164918,43.1604098 47.0558361,43.1604098 C48.2951803,43.1604098 49.2994426,42.1556557 49.2994426,40.9168033 C49.2994426,39.677459 48.2951803,38.6731967 47.0558361,38.6731967" id="Fill-16" fill="#CD1719" mask="url(#mask-4)"></path>
+                                        <path d="M51.5432951,38.6731967 C50.3039508,38.6731967 49.2996885,39.677459 49.2996885,40.9168033 C49.2996885,42.1556557 50.3039508,43.1604098 51.5432951,43.1604098 C52.7826393,43.1604098 53.7869016,42.1556557 53.7869016,40.9168033 C53.7869016,39.677459 52.7826393,38.6731967 51.5432951,38.6731967" id="Fill-17" fill="#CD1719" mask="url(#mask-4)"></path>
+                                        <path d="M27.2235246,26.1067869 C27.2235246,26.7805574 26.7233607,27.1179344 25.7230328,27.1179344 C25.4372951,27.1179344 25.1771311,27.0820328 24.9420492,27.0107213 C24.707459,26.938918 24.5082787,26.8262951 24.345,26.6733443 L24.345,26.6885902 C23.977623,26.3010492 23.7936885,25.9331803 23.7936885,25.5859672 L23.7936885,21.1921967 L20.655,21.1921967 L20.655,26.1067869 C20.655,26.4338361 20.5330328,26.6841639 20.287623,26.8572787 C20.0422131,27.031377 19.6905738,27.1179344 19.2312295,27.1179344 C18.6489344,27.1179344 18.1792623,26.964 17.8222131,26.6580984 L17.8222131,26.6733443 C17.6486066,26.4997377 17.5059836,26.3217049 17.3938525,26.1372787 C17.2812295,25.9538361 17.2251639,25.7802295 17.2251639,25.6174426 L17.2251639,21.1921967 L14.0407377,21.1921967 L14.0407377,29.8577705 C14.0407377,30.8280984 13.7038525,31.6449836 13.030082,32.3074426 C12.4177869,32.9305574 11.5143443,33.2418689 10.3197541,33.2418689 L6.96713115,33.2418689 C5.79270492,33.2418689 4.87893443,32.9305574 4.22631148,32.3074426 C3.47040984,31.6449836 3.09319672,30.8280984 3.09319672,29.8577705 L3.09319672,25.189082 L0.000245901639,25.189082 L0.000245901639,29.7210492 C0.000245901639,31.8338361 0.617459016,33.5531803 1.85286885,34.8805574 C3.19008197,36.3092459 4.79729508,37.0238361 6.6754918,37.0238361 L10.5956557,37.0238361 C11.5954918,37.0238361 12.5220492,36.8143279 13.3743443,36.3962951 C14.2266393,35.9777705 14.9746721,35.3856393 15.617459,34.6203934 C16.0768033,34.0277705 16.4446721,33.328918 16.720082,32.5223607 C16.9954918,31.7162951 17.1740164,30.8531803 17.2561475,29.9344918 C17.7459836,30.2310492 18.2028689,30.4454754 18.6263115,30.5782623 C19.0497541,30.7105574 19.4761475,30.7769508 19.905,30.7769508 C21.0071311,30.7769508 22.0227049,30.2049836 22.9517213,29.0625246 C23.5645082,29.6133443 24.1713934,30.0367869 24.7738525,30.3328525 C25.3758197,30.628918 25.9531967,30.7769508 26.5040164,30.7769508 C27.1059836,30.7769508 27.6572951,30.631377 28.157459,30.3407213 C28.657623,30.0495738 29.0968033,29.634 29.4745082,29.0925246 C29.7395902,28.6946557 29.9540164,28.2146557 30.1177869,27.6535082 C30.2805738,27.0923607 30.3622131,26.4746557 30.3622131,25.8008852 L30.3622131,21.1921967 L27.2235246,21.1921967 L27.2235246,26.1067869 Z" id="Fill-18" fill="#CD1719" mask="url(#mask-4)"></path>
+                                        <polygon id="Fill-19" fill="#CD1719" mask="url(#mask-4)" points="34.4355738 30.7627869 37.2609836 30.7627869 37.2609836 19.7985246 34.4355738 19.7985246"></polygon>
+                                        <path d="M51.4505902,27.5159016 L51.4505902,31.3254098 C51.4505902,31.7936066 51.3453443,32.1240984 51.1343607,32.3163934 C50.9238689,32.5081967 50.5417377,32.6045902 49.988459,32.6045902 L46.3476393,32.6045902 L45.673377,32.6045902 C45.2887869,32.6045902 44.9725574,32.5740984 44.7241967,32.5131148 C44.4758361,32.4521311 44.2766557,32.3581967 44.1266557,32.2318033 C43.9766557,32.104918 43.8738689,31.9490164 43.8173115,31.7611475 C43.7612459,31.5737705 43.7332131,31.3534426 43.7332131,31.0996721 L43.7332131,19.7985246 L40.7814098,19.7985246 L40.7814098,30.8611475 C40.7814098,31.2452459 40.7691148,31.5570492 40.746,31.7960656 C40.7223934,32.035082 40.6874754,32.1968852 40.6407541,32.2809836 L40.6407541,32.2667213 C40.5748525,32.3886885 40.446,32.4757377 40.2537049,32.5263934 C40.0619016,32.5790164 39.8155082,32.6183607 39.5155082,32.6468852 L34.4622295,32.6468852 C34.446,33.957541 34.4199344,34.7832787 34.4479672,36.0767213 L39.628623,36.0767213 C40.2561639,36.0767213 40.8394426,35.9478689 41.378459,35.6896721 C41.9174754,35.432459 42.3974754,35.0552459 42.8194426,34.5585246 L42.9040328,34.6711475 L42.9178033,34.6986885 L42.9458361,34.7272131 C43.7145246,35.4860656 44.8481311,35.9360656 46.3476393,36.0767213 L50.7758361,36.0767213 C51.2538689,36.0767213 51.7250164,35.9459016 52.1887869,35.6827869 C52.6525574,35.4206557 53.0627213,35.0783607 53.4187869,34.6568852 C53.7182951,34.2909836 53.9573115,33.8508197 54.1358361,33.3354098 C54.313377,32.82 54.4028852,32.2667213 54.4028852,31.6765574 L54.4028852,27.5159016 L51.4505902,27.5159016 Z" id="Fill-20" fill="#CD1719" mask="url(#mask-4)"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>   
+                    -->
+                </div>
+                <div class="row">
+                    <span style="font-size: 12px; line-height: 1.75; text-align: center; color: #adb0b4;">نسخه
+                        1.0.0</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="{% static '/js/login/Login_v1.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/login/virtualKeyboard.js' %}"></script>
+    <script>
+        var r = document.querySelector(':root');
+
+        const el = document.getElementsByClassName("field-validation-error");
+        if (el) {
+            for (let i = 0; i < el.length; i++) {
+                const item = el[i];
+                item.parentNode.parentNode.style.color = "#ff2c3d";
+                const input = item.parentNode.parentNode.getAttribute('for');
+                document.getElementById(input).style.border = 'solid 2px #ff2c3d';
+                item.innerHTML = '<span class="text-title">' + item.innerHTML + '</span>' + '<img src="/Contents/Default/Images/Error_Icon.png"' +
+                    'srcset="/Contents/Default/Images/Error_Icon@2x.png 2x,/Contents/Default/Images/Error_Icon@3x.png 3x"' +
+                    'class="error-icon-img">';
+            }
+
+        }
+
+
+        const notify = document.getElementById('notification-alert').innerHTML.trim();
+        if (notify == "") {
+            document.getElementById('notification-alert-container').style.display = 'none';
+        }
+
+        const textBody = document.getElementById('login-text-body').innerHTML.trim();
+        if (textBody == "") {
+            document.getElementById('login-text-body-container').style.display = 'none';
+        }
+
+        const securityTips = document.getElementById('login-security-tips').innerHTML.trim();
+        if (securityTips == "") {
+            document.getElementById('login-security-tips-container').style.display = 'none';
+        }
+
+        const links = document.getElementsByClassName("spcial-links");
+
+
+
+        var request = new XMLHttpRequest();
+        request.open("GET", '/Contents/Default/Images/default.svg');
+        request.setRequestHeader("Content-Type", "image/svg+xml");
+        request.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'default') {
+                    link.querySelector('.after-icon').innerHTML = response;
+                    link.className += " with-arrow";
+                }
+            }
+
+        });
+
+        request.send();
+
+
+
+        var request_1 = new XMLHttpRequest();
+        request_1.open("GET", '/Contents/Default/Images/instagram.svg');
+        request_1.setRequestHeader("Content-Type", "image/svg+xml");
+        request_1.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'instagram') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+
+        request_1.send();
+
+
+        var request_2 = new XMLHttpRequest();
+        request_2.open("GET", '/Contents/Default/Images/telegram.svg');
+        request_2.setRequestHeader("Content-Type", "image/svg+xml");
+        request_2.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'telegram') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+
+        request_2.send();
+
+
+        var request_3 = new XMLHttpRequest();
+        request_3.open("GET", '/Contents/Default/Images/chrome.svg');
+        request_3.setRequestHeader("Content-Type", "image/svg+xml");
+        request_3.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'chrome') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_3.send();
+
+        var request_4 = new XMLHttpRequest();
+        request_4.open("GET", '/Contents/Default/Images/anydesk.svg');
+        request_4.setRequestHeader("Content-Type", "image/svg+xml");
+        request_4.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'anydesk') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_4.send();
+
+        var request_5 = new XMLHttpRequest();
+        request_5.open("GET", '/Contents/Default/Images/whatsapp.svg');
+        request_5.setRequestHeader("Content-Type", "image/svg+xml");
+        request_5.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'whatsapp') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_5.send();
+
+
+
+        function changeIconColor(isActive, vriable) {
+            var rs = getComputedStyle(r);
+
+            let activeColor = rs.getPropertyValue('--icon-active');
+            let deactiveColor = rs.getPropertyValue('--icon-deactive');
+            if (isActive) {
+                r.style.setProperty(`--${vriable}`, activeColor);
+            } else {
+                r.style.setProperty(`--${vriable}`, deactiveColor);
+
+            }
+        }
+    </script>
+
 </body>
+
 </html>

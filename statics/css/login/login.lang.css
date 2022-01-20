@@ -1,0 +1,9 @@
+﻿body ,input{ direction: rtl;text-align: right}
+.login-container .loginForm .validation-message{left: 7px;right: auto!important;}
+[class*="col-"]{direction: rtl}
+.login-container .sidebar .form-group .controls > i, .resetPassword-container .sidebar .form-group .controls > i{right: 0}
+.login-container .sidebar .form-group .form-control, .resetPassword-container .sidebar .form-group .form-control{ padding-left: 5px;padding-right: 25px}
+.dir{direction: rtl}
+.float{float: right}
+.fright{float:right}
+.fleft{float:left}
