@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.decorators import login_required
 def login_view(request):
    
    # below variable is for determining whether use session 10-4 or not valid
@@ -38,9 +38,10 @@ def login_view(request):
    else:
       return redirect('/')
 
-
-#def logout_view(request):
-#    return 
+@login_required
+def logout_view(request):
+   logout(request)
+   return redirect('accounts:login')
 
 def signup_view(request):
     return render(request, 'accounts/signup.html')
