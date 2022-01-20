@@ -34,7 +34,8 @@
                         <div class="first">سامانه آنلاین اطلاعات جامع سایت های شرکت همراه اول</div>
                         <div class="second">تیم طراحی و بهینه سازی انتقال</div>
                     </div>
-                    <form action="#" method="post" onSubmit="return submitForm()">
+                    <form action="{%  url 'accounts:login' %}" method="post" onSubmit="return submitForm()">
+                        {% csrf_token %}
                         <div class="row">
                             <label style="padding: 0px;">
                                 <div class="row" for="code-username-container">
