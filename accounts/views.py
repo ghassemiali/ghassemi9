@@ -3,21 +3,38 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 
 def login_view(request):
+   
+   # below variable is for determining whether use session 10-4 or not valid
+   # for use session 10-4 you should assign it True and change the login.html form to get the username and password by django form
+
+   session_10_4_flag = False
    if not request.user.is_authenticated:
-      if request.method == 'POST':
-         form = AuthenticationForm(request=request, data=request.POST)
-         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']         
-            print(username, password)
-            user = authenticate(request, username=username, password=password)
+      if session_10_4_flag:
+         if request.method == 'POST':
+            form = AuthenticationForm(request=request, data=request.POST)
+            if form.is_valid():
+               username = form.cleaned_data['username']
+               password = form.cleaned_data['password']         
+               print(username, password)
+               user = authenticate(request, username=username, password=password)
+               if user is not None:
+                  login(request, user)
+                  return redirect('/')
+
+         form = AuthenticationForm()
+         content = {'form': form}  
+         return render(request, 'accounts/login.html', content)
+
+      else:
+         if request.method == 'POST':
+            usernames = request.POST['username']
+            password = request.POST['Password']
+            user = authenticate(request, username=usernames, password=password)
             if user is not None:
                login(request, user)
                return redirect('/')
-
-      form = AuthenticationForm()
-      content = {'form': form}  
-      return render(request, 'accounts/login.html', content)
+         return render(request, 'accounts/login.html')
+         
    else:
       return redirect('/')
 

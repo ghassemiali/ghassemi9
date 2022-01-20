@@ -36,9 +36,10 @@
                     </div>
                     <form action="{%  url 'accounts:login' %}" method="post" onSubmit="return submitForm()">
                         {% csrf_token %}
-
+                        <!-- below line is required to uncomment when you want to use method of session 10-4
                         {{form.as_p}}
-                        <!--
+                        -->
+                        
                         <div class="row">
                             <label style="padding: 0px;">
                                 <div class="row" for="code-username-container">
@@ -195,7 +196,7 @@
                             </label>
                         </div>
 
-                    -->
+                    
                         <!---
                         <div class="row">
                             <label style="padding: 0px;">
