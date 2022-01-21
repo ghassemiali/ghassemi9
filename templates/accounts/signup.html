@@ -1,0 +1,513 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="fa" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{% static '/css/login/flaticon.min.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/fontiran.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static '/css/login/login_v1.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo" crossorigin="anonymous" />
+    <link href="{% static '/css/login/almasfont.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/login.lang.css' %}" rel="stylesheet" />
+    <link href="{% static '/css/login/virtualKeyboard.css' %}" rel="stylesheet" />
+    <title>ورود به سامانه</title>
+</head>
+
+
+<body style="overflow:hidden;">
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+            <div class="main-form-holder">
+                <div class="col-sm-10 col-md-10 col-lg-8 col-xl-8" style="margin: 16px auto 16px auto;max-width:75%;">
+                    <!---       <div class="row logo">
+                        <img src="{% static '/img/login/LogoLogin.png' %}"
+                             class="Image-1" />
+                    </div>   -->
+                    <div class="row logo-title">
+                        <div class="first">سامانه آنلاین اطلاعات جامع سایت های شرکت همراه اول</div>
+                        <div class="second">تیم طراحی و بهینه سازی انتقال</div>
+                    </div>
+                    <form action="{%  url 'accounts:signup' %}" method="post" onSubmit="return submitForm()">
+                        {% csrf_token %}
+                        <!-- below line is required to uncomment when you want to use method of session 10-4
+                        {{form.as_p}}
+                        -->
+                        
+                        <div class="row">
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-username-container">
+                                    <div class="col-3">
+                                        <label class="text-title">نام کاربری</label>
+                                    </div>
+                                    <div class="col-9" style="text-align: end; padding: 0;">
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="username" style="padding: 0px">
+                                <div class="row Search-bar-background" id="code-username-container">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9848 15.3462C8.11716 15.3462 4.8143 15.931 4.8143 18.2729C4.8143 20.6148 8.0962 21.2205 11.9848 21.2205C15.8524 21.2205 19.1543 20.6348 19.1543 18.2938C19.1543 15.9529 15.8733 15.3462 11.9848 15.3462Z"
+                                                stroke="var(--user-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.9848 12.0059C14.5229 12.0059 16.58 9.94779 16.58 7.40969C16.58 4.8716 14.5229 2.81445 11.9848 2.81445C9.44667 2.81445 7.38858 4.8716 7.38858 7.40969C7.38001 9.93922 9.42382 11.9973 11.9524 12.0059H11.9848Z"
+                                                stroke="var(--user-icon-color)" stroke-width="1.42857"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-11 col-md-11 col-lg-10 col-xl-11" style="max-width: 90%;">
+                                        <input type="text" name="username" class="input-text" id="username"
+                                            onfocus="changeIconColor(true,'user-icon-color')"
+                                            onblur="changeIconColor(false,'user-icon-color')" autocomplete="off"
+                                            placeholder="نام کاربری یا ایمیل را وارد کنید" />
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+
+                        <div class="row">
+
+
+
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-password-container">
+                                    <div class="col-3">
+                                        <label class="text-title">رمز عبور</label>
+                                    </div>
+                                    <div class="col-9 paasord-rm-title" style="text-align: end; padding: 0;">
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="password" style="padding: 0px;">
+                                <div class="row Search-bar-background" id="code-password-container">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4234 9.4478V7.3008C16.4234 4.7878 14.3854 2.7498 11.8724 2.7498C9.3594 2.7388 7.3134 4.7668 7.3024 7.2808V7.3008V9.4478"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15.6832 21.2496H8.0422C5.9482 21.2496 4.2502 19.5526 4.2502 17.4576V13.1686C4.2502 11.0736 5.9482 9.37659 8.0422 9.37659H15.6832C17.7772 9.37659 19.4752 11.0736 19.4752 13.1686V17.4576C19.4752 19.5526 17.7772 21.2496 15.6832 21.2496Z"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path d="M11.8629 14.2028V16.4238" stroke="var(--password-icon-color)"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-10 col-md-10 col-lg-9 col-xl-10" style="max-width: 80%;">
+
+                                        <input autocomplete="off" class="input-text keyboardInput" data-val="true"
+                                            id="password" placeholder="رمز عبور خود را وارد کنید" name="password1"
+                                            onfocus="changeIconColor(true,'password-icon-color')"
+                                            onblur="changeIconColor(false,'password-icon-color')"
+                                            style="max-width: 88%;padding: 0;" type="password" />
+
+                                        <div class="keyboardButton" style="float:left">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="2" y="4.5" width="20" height="15" rx="4" stroke="#130F26"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7.5 14.5H16.5" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6 8.5H7.02946" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M9.65714 8.5H10.6866" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13.3143 8.5H14.3437" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.9714 8.5H18.0009" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M6 11.5H7.02946" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M9.65714 11.5H10.6866" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13.3143 11.5H14.3437" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M16.9714 11.5H18.0009" stroke="#130F26" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-1" style="padding-right:0px;" style="max-width: 10%;">
+
+                                        <span id="unvisibleIcon" onclick="showPassword(false)">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.7606 14.3668C9.1856 13.7928 8.8356 13.0128 8.8356 12.1378C8.8356 10.3848 10.2476 8.9718 11.9996 8.9718C12.8666 8.9718 13.6646 9.3228 14.2296 9.8968"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M15.1048 12.699C14.8728 13.989 13.8568 15.007 12.5678 15.241"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M6.6546 17.4724C5.0676 16.2264 3.7236 14.4064 2.7496 12.1374C3.7336 9.85835 5.0866 8.02835 6.6836 6.77235C8.2706 5.51635 10.1016 4.83435 11.9996 4.83435C13.9086 4.83435 15.7386 5.52635 17.3356 6.79135"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M19.4476 8.99084C20.1356 9.90484 20.7406 10.9598 21.2496 12.1368C19.2826 16.6938 15.8066 19.4388 11.9996 19.4388C11.1366 19.4388 10.2856 19.2988 9.46759 19.0258"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M19.887 4.24963L4.11301 20.0236" stroke="#130F26"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                        <span id="visibleIcon" onclick="showPassword(true)"
+                                            style="text-align:center; display:none;">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15.1615 12.0531C15.1615 13.7991 13.7455 15.2141 11.9995 15.2141C10.2535 15.2141 8.8385 13.7991 8.8385 12.0531C8.8385 10.3061 10.2535 8.89111 11.9995 8.89111C13.7455 8.89111 15.1615 10.3061 15.1615 12.0531Z"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M11.998 19.3549C15.806 19.3549 19.289 16.6169 21.25 12.0529C19.289 7.48885 15.806 4.75085 11.998 4.75085H12.002C8.194 4.75085 4.711 7.48885 2.75 12.0529C4.711 16.6169 8.194 19.3549 12.002 19.3549H11.998Z"
+                                                    stroke="#130F26" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="row">
+
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-password-container">
+                                    <div class="col-3">
+                                        <label class="text-title">تکرار رمز عبور</label>
+                                    </div>
+                                    <div class="col-9 paasord-rm-title" style="text-align: end; padding: 0;">
+
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label for="password" style="padding: 0px;">
+                                <div class="row Search-bar-background" id="code-password-container">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4234 9.4478V7.3008C16.4234 4.7878 14.3854 2.7498 11.8724 2.7498C9.3594 2.7388 7.3134 4.7668 7.3024 7.2808V7.3008V9.4478"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15.6832 21.2496H8.0422C5.9482 21.2496 4.2502 19.5526 4.2502 17.4576V13.1686C4.2502 11.0736 5.9482 9.37659 8.0422 9.37659H15.6832C17.7772 9.37659 19.4752 11.0736 19.4752 13.1686V17.4576C19.4752 19.5526 17.7772 21.2496 15.6832 21.2496Z"
+                                                stroke="var(--password-icon-color)" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <path d="M11.8629 14.2028V16.4238" stroke="var(--password-icon-color)"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-10 col-md-10 col-lg-9 col-xl-10" style="max-width: 80%;">
+
+                                        <input autocomplete="off" class="input-text" data-val="true"
+                                            id="password" placeholder="رمز عبور خود را مجدد وارد کنید" name="password2"
+                                            onfocus="changeIconColor(true,'password-icon-color')"
+                                            onblur="changeIconColor(false,'password-icon-color')"
+                                            style="max-width: 88%;padding: 0;" type="password" />
+
+                                       
+                                    </div>
+
+
+
+
+                                </div>
+                            </label>
+
+                        </div>
+                    
+                        <!---
+                        <div class="row">
+                            <label style="padding: 0px;">
+                                <div class="row" for="code-captcha-container">
+                                    <div class="col-3" style="max-width: 25%;">
+                                        <label class="text-title">کد امنیتی</label>
+                                    </div>
+                                    <div class="col-9" style="text-align: end; padding: 0;max-width: 75%;">
+                                        
+                                    </div>
+                                </div>
+                            </label>
+
+
+
+
+                            <label for="captcha" style="padding: 0px;">
+                                <div class="row Search-bar-background" id="code-captcha-container" style="margin-bottom: 32px;">
+                                    <div class="col-sm-1 col-md-1 col-lg-2 col-xl-1" style="max-width: 10%;">
+
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9845 21.606C11.9845 21.606 19.6565 19.283 19.6565 12.879C19.6565 6.474 19.9345 5.974 19.3195 5.358C18.7035 4.742 12.9905 2.75 11.9845 2.75C10.9785 2.75 5.26551 4.742 4.65051 5.358C4.03451 5.974 4.31251 6.474 4.31251 12.879C4.31251 19.283 11.9845 21.606 11.9845 21.606Z"
+                                                  stroke="var(--security-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M9.38589 11.8746L11.2779 13.7696L15.1759 9.86963" stroke="var(--security-icon-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-5 col-xl-6" style="max-width: 49%;">
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="capcha"
+                                               class="input-text"
+                                               id="captcha"
+                                               onfocus="changeIconColor(true,'security-icon-color')"
+                                               onblur="changeIconColor(false,'security-icon-color')"
+                                               placeholder="کد روبه رو را وارد کنید" />
+                                    </div>
+                                    <div class="col-4" style="text-align: left;max-width: 31%;">
+                                        <img onload="this.style.opacity = '1'" alt="" class="captcha-img"
+                                             onclick="return changeCaptchaPlus()"
+                                             id="captcha-img-plus"
+                                             src="" style="opacity: 0.5;" />
+                                    </div>
+
+                                    <div class="col-1" style="padding-right: 0px;max-width: 10%;">
+
+                                        <span onclick="return changeCaptchaPlus()">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M20 12C20 16.4186 16.4186 20 12 20C7.58141 20 4 16.4186 4 12C4 7.58141 7.58141 4 12 4H14"
+                                                      stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M13 1.5L15.4749 3.97487L13 6.44975" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    --->
+
+                        <div class="row">
+                            <input type="submit" style="display:none;" id="main-form" />
+                            <label style="padding: 0px;" for="main-form">
+                                <div class="row Rectangle-190">
+                                    <div class="col-2"></div>
+                                    <div class="col-8" style="text-align:center;margin:auto;">ثبت نام در سامانه</div>
+                                    <div class="col-2" style="margin: auto;padding-right: 0px;">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.25 12.2744L19.25 12.2744" stroke="#fff" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="#fff"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row forget-password">
+                    <a href="{% url 'accounts:login' %}" class="link">
+                        برای ورود اینجا را کلیک کنید
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-8 Rectangle-1422" style="overflow: hidden;">
+
+            <img src="{% static '/img/login/all-candles.png' %}" srcset="/Contents/Default/Images/all-candles@2x.png 2x,
+                     /Contents/Default/Images/all-candles@3x.png 3x"
+                style="display: block; min-width: -webkit-fill-available; max-height: -webkit-fill-available;" />
+
+        </div>
+
+      
+
+    </div>
+    <script type="text/javascript" src="{% static '/js/login/Login_v1.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/login/virtualKeyboard.js' %}"></script>
+    <script>
+        var r = document.querySelector(':root');
+
+        const el = document.getElementsByClassName("field-validation-error");
+        if (el) {
+            for (let i = 0; i < el.length; i++) {
+                const item = el[i];
+                item.parentNode.parentNode.style.color = "#ff2c3d";
+                const input = item.parentNode.parentNode.getAttribute('for');
+                document.getElementById(input).style.border = 'solid 2px #ff2c3d';
+                item.innerHTML = '<span class="text-title">' + item.innerHTML + '</span>' + '<img src="/Contents/Default/Images/Error_Icon.png"' +
+                    'srcset="/Contents/Default/Images/Error_Icon@2x.png 2x,/Contents/Default/Images/Error_Icon@3x.png 3x"' +
+                    'class="error-icon-img">';
+            }
+
+        }
+
+
+        const notify = document.getElementById('notification-alert').innerHTML.trim();
+        if (notify == "") {
+            document.getElementById('notification-alert-container').style.display = 'none';
+        }
+
+        const textBody = document.getElementById('login-text-body').innerHTML.trim();
+        if (textBody == "") {
+            document.getElementById('login-text-body-container').style.display = 'none';
+        }
+
+        const securityTips = document.getElementById('login-security-tips').innerHTML.trim();
+        if (securityTips == "") {
+            document.getElementById('login-security-tips-container').style.display = 'none';
+        }
+
+        const links = document.getElementsByClassName("spcial-links");
+
+
+
+        var request = new XMLHttpRequest();
+        request.open("GET", '/Contents/Default/Images/default.svg');
+        request.setRequestHeader("Content-Type", "image/svg+xml");
+        request.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'default') {
+                    link.querySelector('.after-icon').innerHTML = response;
+                    link.className += " with-arrow";
+                }
+            }
+
+        });
+
+        request.send();
+
+
+
+        var request_1 = new XMLHttpRequest();
+        request_1.open("GET", '/Contents/Default/Images/instagram.svg');
+        request_1.setRequestHeader("Content-Type", "image/svg+xml");
+        request_1.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'instagram') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+
+        request_1.send();
+
+
+        var request_2 = new XMLHttpRequest();
+        request_2.open("GET", '/Contents/Default/Images/telegram.svg');
+        request_2.setRequestHeader("Content-Type", "image/svg+xml");
+        request_2.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'telegram') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+
+        request_2.send();
+
+
+        var request_3 = new XMLHttpRequest();
+        request_3.open("GET", '/Contents/Default/Images/chrome.svg');
+        request_3.setRequestHeader("Content-Type", "image/svg+xml");
+        request_3.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'chrome') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_3.send();
+
+        var request_4 = new XMLHttpRequest();
+        request_4.open("GET", '/Contents/Default/Images/anydesk.svg');
+        request_4.setRequestHeader("Content-Type", "image/svg+xml");
+        request_4.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'anydesk') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_4.send();
+
+        var request_5 = new XMLHttpRequest();
+        request_5.open("GET", '/Contents/Default/Images/whatsapp.svg');
+        request_5.setRequestHeader("Content-Type", "image/svg+xml");
+        request_5.addEventListener("load", function (event) {
+            var response = event.target.responseText;
+            for (let j = 0; j < links.length; j++) {
+                const link = links[j];
+                let forIcon = link.getAttribute('for-icon');
+                if (forIcon == 'whatsapp') {
+                    link.querySelector('.before-icon').innerHTML = response;
+                }
+            }
+        });
+        request_5.send();
+
+
+
+        function changeIconColor(isActive, vriable) {
+            var rs = getComputedStyle(r);
+
+            let activeColor = rs.getPropertyValue('--icon-active');
+            let deactiveColor = rs.getPropertyValue('--icon-deactive');
+            if (isActive) {
+                r.style.setProperty(`--${vriable}`, activeColor);
+            } else {
+                r.style.setProperty(`--${vriable}`, deactiveColor);
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
