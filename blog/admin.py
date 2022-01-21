@@ -6,7 +6,7 @@ from .models import Post, Category, Tag
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'published_date'
     empty_value_display = '-empty-'
-    list_display = ('title', 'author', 'counted_views', 'status', 'published_date')
+    list_display = ('title', 'author', 'counted_views', 'login_require', 'status', 'published_date')
     list_filter = ('status',)
     ordering = ('-created_date',)
     search_fields = ('title', 'content')

@@ -37,10 +37,14 @@ def blog_single(request, pid):
     now = datetime.datetime.now().astimezone(datetime.timezone(x))
     posts = Post.objects.filter(status=1, published_date__lte=now)     
     post = get_object_or_404(posts, pk=pid)
-    context = {'post': post}
-    add_one_in_views(post)
-    return render(request, 'blog/blog-single.html', context)
-    
+    if not post.login_require or request.user.is_authenticated:
+        context = {'post': post}
+        add_one_in_views(post)
+        return render(request, 'blog/blog-single.html', context)
+    else:
+        return render(request, 'accounts/login.html')    
+
+
 def test_view(request, pid):
     post = get_object_or_404(Post, pk=pid)
     context = {'posts': post}
