@@ -51,3 +51,6 @@ def test_view(request):
 
     form = ContactForm()
     return render(request, 'test.html', {'form': form})
+
+def error_view(request):
+    return render(request, 'error.html')

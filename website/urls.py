@@ -1,5 +1,5 @@
 from django.urls import path
-from website.views import home_view, about_view, contact_view, elements_view, test_view, newsletter_view
+from website.views import *
 
 app_name = 'website'
 
@@ -9,5 +9,6 @@ urlpatterns = [
     path('contact/', contact_view, name='contact'),
     path('elements/', elements_view, name='elements'),
     path('newsletter/', newsletter_view, name='newsletter'),
-    path('test/', test_view, name='test')
+    path('test/', test_view, name='test'),
+    path('error/', error_view, name='error'),
 ]
