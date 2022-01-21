@@ -257,6 +257,11 @@
                         </div>
                     --->
 
+                        <div class="form-check">
+                            <input class="form-check-input boolean optional" type="checkbox" value="1" name="remember_user" id="user_remember_me">
+                            <label class="form-check-label boolean optional" for="user_remember_me">کلمه عبور را به خاطر بسپار</label>
+                        </div>
+
                         <div class="row">
                             <input type="submit" style="display:none;" id="main-form" />
                             <label style="padding: 0px;" for="main-form">
@@ -343,7 +348,7 @@
                     <span>پوشه فراز</span>
                     <span class='after-icon'></span>
                 </a>
-                <a class='Rectangle-1406 spcial-links' for-icon='default' href="c:\">
+                <a class='Rectangle-1406 spcial-links' for-icon='default' href="{% url 'website:home' %}">
                     <span class='before-icon'></span>
                     <span>پوشه تیم انتقال</span>
                     <span class='after-icon'></span>

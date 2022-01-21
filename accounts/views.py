@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from django.contrib.auth.decorators import login_required
 def login_view(request):
    
@@ -27,9 +27,15 @@ def login_view(request):
 
       else:
          if request.method == 'POST':
-            usernames = request.POST['username']
+            username = request.POST['username']
             password = request.POST['Password']
-            user = authenticate(request, username=usernames, password=password)
+
+            try:
+               user = User.objects.get(email=username)
+               username = user.username
+            except:
+               pass
+            user = authenticate(request, username=username, password=password)
             if user is not None:
                login(request, user)
                return redirect('/')
@@ -48,8 +54,10 @@ def signup_view(request):
       if request.method == 'POST':
          form = UserCreationForm(request.POST)
          if form.is_valid():
-            print('yuea')
-            form.save()
+            user = form.save()
+            user.email = request.POST['email']
+            user.save()
             return render(request, 'accounts/login.html')
       return render(request, 'accounts/signup.html')
    return render(request, 'website/index.html')
+
