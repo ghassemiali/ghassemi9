@@ -1,3 +1,4 @@
+{% load humanize %}
 {% load static %}
 
 <div class="single-sidebar-widget popular-post-widget">
@@ -13,6 +14,12 @@
                     <h6>{{post.title}}</h6>
                 </a>
                 <p>{{post.published_date|date:"d M Y"}}</p>
+                <!--
+                <p>{{1|apnumber}} lower that 10 and else</p>  
+                <p>{{42000000|intword}}</p>
+                <p>{{posts.published_date|naturalday}}</p>
+                <p>{{posts.published_date|naturaltime}}</p>
+                -->
             </div>
         </div>
         {% endfor %}
