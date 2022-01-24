@@ -16,16 +16,13 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+#-----------------------------------------------------------------------------
+# after commission 11-1 should run server with prod or dev by below structure|
+# python manage.py runserver --settings=setting7.setting.prod                |
+# python manage.py runserver --settings=setting7.setting.dev                 |
+#-----------------------------------------------------------------------------
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$gp^_#+my6pip#*62lhu#n@#vij^vdb1tfb*x+==1k%6h*euiq'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -51,8 +48,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 ]
 
-# site framework
-SITE_ID = 2
+
 
 # robots
 ROBOTS_USE_HOST = True
@@ -95,15 +91,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ghassemi7.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -143,14 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'statics'
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
