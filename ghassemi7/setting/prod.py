@@ -16,10 +16,19 @@ SITE_ID = 2
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# after changing the database from sqlite to MySQL in production, it will not poassible to run below command
+# python manage.py runserver settings=ghassemi7.setting.prod
+# after doing this, just can run and test in computer with below command
+# python manage.py runserver settings=ghassemi7.setting.dev
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mayramin_travel',
+        'USER': 'mayramin_ali',
+        'PASSWORD': 'Ali@2631981',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
