@@ -6,7 +6,7 @@ from ghassemi7.settings import *
 SECRET_KEY = 'django-insecure-$gp^_#+my6pip#*62lhu#n@#vij^vdb1tfb*x+==1k%6h*euiq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['mayraminam.com', 'www.mayraminam.com']
 
@@ -14,18 +14,12 @@ ALLOWED_HOSTS = ['mayraminam.com', 'www.mayraminam.com']
 SITE_ID = 2
 
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# after changing the database from sqlite to MySQL in production, it will not poassible to run below command
-# python manage.py runserver settings=ghassemi7.setting.prod
-# after doing this, just can run and test in computer with below command
-# python manage.py runserver settings=ghassemi7.setting.dev
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mayramin_travel',
-        'USER': 'mayramin_ali',
+        'NAME': 'mayramin_travel',  # the name of engine in mayraminam.com
+        'USER': 'mayramin_ali',     # the name of database in mayraminam.com
         'PASSWORD': 'Ali@2631981',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -40,4 +34,20 @@ STATICFILES_DIRS = [
     BASE_DIR / 'statics'
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+#X-Content-Type-Options
+SECURE_CONTENT_TYPE_NOSNIFF = True
+## Strict-Transport-Security
+SECURE_HSTS_SECONDS = 15768000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+## that requests over HTTP are redirected to HTTPS. aslo can config in webserver
+SECURE_SSL_REDIRECT = True 
+
+# for more security
 CSRF_COOKIE_SECURE = True
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = 'Strict'
