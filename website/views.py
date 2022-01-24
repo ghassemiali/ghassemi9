@@ -54,3 +54,7 @@ def test_view(request):
 
 def error_view(request):
     return render(request, 'error.html')
+
+# this function is only for the condition that the DEBUG is false and it's for mayraminam
+def error_404_view(request, exception):
+    return HttpResponseRedirect('/')
